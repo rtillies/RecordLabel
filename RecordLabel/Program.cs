@@ -16,12 +16,13 @@ while (title != "quit")
     var album = new Album(artist, title);
     inventory.AddAlbum(album);
 
-    Console.Write("Enter album songs, with a comma between each song. An album can have up to 10 songs.  For example: The Song That Never Ends, Happy Birthday, Thriller, Take Me to the River");
+    Console.WriteLine("Enter album songs, with a comma between each song. An album can have up to 10 songs.  For example: The Song That Never Ends, Happy Birthday, Thriller, Take Me to the River");
+    Console.Write(": ");
     var songInput = Console.ReadLine();
 
     var songTitles = songInput.Split(',');
 
-    for (var i = 0; i < 10; i++)
+    for (var i = 0; i < songTitles.Length && i < 10; i++)
     {
         album.AddSong(songTitles[i]);
     }
@@ -30,12 +31,12 @@ while (title != "quit")
     Console.WriteLine("Side A");
     foreach (var song in album.SideASongs)
     {
-        Console.WriteLine(song);
+        Console.WriteLine($" * {song.TrimStart()}");
     }
     Console.WriteLine("Side B");
     foreach (var song in album.SideBSongs)
     {
-        Console.WriteLine(song);
+        Console.WriteLine($" * {song.TrimStart()}");
     }
 
     Console.Write("Enter 'quit' to exit the program. Or, Enter another album title: ");
