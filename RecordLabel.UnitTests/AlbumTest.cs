@@ -87,5 +87,12 @@ namespace RecordLabel.UnitTests
             Assert.Equal(expected, actual);
         }
 
+        [Fact]
+        public void Inventory_Constructor_EmptyInventoryCreated()
+        {
+            var myAlbums = new Inventory();
+            Assert.Empty(myAlbums.Albums);
+        }
+
     }
 }
