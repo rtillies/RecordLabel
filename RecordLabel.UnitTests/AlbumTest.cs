@@ -57,5 +57,35 @@ namespace RecordLabel.UnitTests
             Assert.Equal(5, stopMakingSense.SideBSongs.Count);
         }
 
+        [Fact]
+        public void Album_Songs_ReturnsListOfAllSongs()
+        {
+            // Arrange
+            Album stopMakingSense = new Album("Talking Heads", "Stop Making Sense");
+            List<string> expected = new List<string>
+            {
+                "Song 1", "Song 2", "Song 3", "Song 4", "Song 5",
+                "Song 6", "Song 7", "Song 8", "Song 9", "Song 10"
+            };
+
+            // Act: add 10 songs
+            stopMakingSense.AddSong("Song 1");
+            stopMakingSense.AddSong("Song 2");
+            stopMakingSense.AddSong("Song 3");
+            stopMakingSense.AddSong("Song 4");
+            stopMakingSense.AddSong("Song 5");
+            stopMakingSense.AddSong("Song 6");
+            stopMakingSense.AddSong("Song 7");
+            stopMakingSense.AddSong("Song 8");
+            stopMakingSense.AddSong("Song 9");
+            stopMakingSense.AddSong("Song 10");
+
+            // Act
+            var actual = stopMakingSense.Songs();
+
+            // Assert
+            Assert.Equal(expected, actual);
+        }
+
     }
 }
