@@ -94,5 +94,15 @@ namespace RecordLabel.UnitTests
             Assert.Empty(myAlbums.Albums);
         }
 
+        [Fact]
+        public void Inventory_AddAlbum_AddsAlbumToInventory()
+        {
+            var myAlbums = new Inventory();
+            Album stopMakingSense = new Album("Talking Heads", "Stop Making Sense");
+
+            myAlbums.AddAlbum(stopMakingSense);
+
+            Assert.Equal(stopMakingSense, myAlbums.Albums.Last());
+        }
     }
 }
