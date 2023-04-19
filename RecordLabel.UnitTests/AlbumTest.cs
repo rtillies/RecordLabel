@@ -104,5 +104,38 @@ namespace RecordLabel.UnitTests
 
             Assert.Equal(stopMakingSense, myAlbums.Albums.Last());
         }
+
+        [Fact]
+        public void Inventory_AllSongs_ReturnsAllSongsFromAllAlbums()
+        {
+            List<string> expected = new List<string>
+            {
+                "Song 1", "Song 2", "Song 3", "Song 4", "Song 5",
+                "Song 6", "Song 7", "Song 8", "Song 9", "Song 10"
+            };
+
+            Album stopMakingSense = new Album("Talking Heads", "Stop Making Sense");
+            stopMakingSense.AddSong("Song 1");
+            stopMakingSense.AddSong("Song 2");
+            stopMakingSense.AddSong("Song 3");
+            stopMakingSense.AddSong("Song 4");
+            stopMakingSense.AddSong("Song 5");
+            stopMakingSense.AddSong("Song 6");
+
+            Album scorpion = new Album("Drake", "Scorpion");
+            scorpion.AddSong("Song 7");
+            scorpion.AddSong("Song 8");
+            scorpion.AddSong("Song 9");
+            scorpion.AddSong("Song 10");
+
+            var myAlbums = new Inventory();
+            myAlbums.AddAlbum(stopMakingSense);
+            myAlbums.AddAlbum(scorpion);
+
+            var actual = myAlbums.AllSongs();
+
+            // Assert
+            Assert.Equal(expected, actual);
+        }
     }
 }
