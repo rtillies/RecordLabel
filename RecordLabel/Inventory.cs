@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RecordLabel
 {
-    internal class Inventory
+    public class Inventory
     {
         public List<Album> Albums { get; private set; }
 
@@ -26,10 +26,11 @@ namespace RecordLabel
 
             foreach (Album album in Albums)
             {
-                foreach (string song in album.Songs())
-                {
-                    allSongs.Add(song);
-                }
+                //foreach (string song in album.Songs())
+                //{
+                //    allSongs.Add(song);
+                //}
+                allSongs.AddRange(album.Songs());
             }
 
             return allSongs;
